@@ -24,7 +24,7 @@ public class MqttPublishClientMain {
       sampleClient.connect(connOpts);
       System.out.println("Connected");
       System.out.println("Publishing message: "+content);
-      MqttMessage message = new MqttMessage(content.getBytes());
+      MqttMessage message = new MqttMessage("0,0,0".getBytes());
       message.setQos(qos);
       sampleClient.publish(topic, message);
       System.out.println("Message published");

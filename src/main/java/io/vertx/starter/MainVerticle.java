@@ -8,8 +8,13 @@ public class MainVerticle extends AbstractVerticle {
   public void start() {
     vertx.createHttpServer()
         .requestHandler(req -> {
-          vertx.eventBus().send("event.web", "Received a request");
-          req.response().end("Hello Vert.x!");
+          vertx.eventBus().send("event.web", "Received a request", reply -> {
+            if(reply.failed())
+              req.response().end("Boohohohohoho!");
+            else
+              req.response().end("Yeahhh!");
+          });
+
         })
         .listen(8080);
   }
