@@ -5,7 +5,7 @@ import io.vertx.core.VertxOptions;
 
 public class EventbusVerticleRunner {
   public static void main(String[] args) {
-    Vertx.clusteredVertx(new VertxOptions().setClusterHost("127.0.0.1"), asyncResult -> {
+    Vertx.clusteredVertx(new VertxOptions(), asyncResult -> {
       if(asyncResult.succeeded())
         asyncResult.result().deployVerticle(EventbusVerticle.class.getName());
       else
